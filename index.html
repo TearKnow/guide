@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="author">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>叶飞&徐弌</title>
     <style>
         * {
@@ -35,13 +34,8 @@
             border: 1px solid red;
             background-color: #ffffff;
             display: inline-block;
-            transition: all 0.5s;
-            transition-delay: 2s;
         }
 
-        .numw:hover {
-            height: 200px;
-        }
 
         .numw ul {
             list-style: none;
@@ -78,14 +72,6 @@
             border: 1px solid #e2e2e2;
         }
 
-        @keyframes circle3 {
-            0% {
-                transform: translateY(0px);
-            }
-            100% {
-                transform: translateY(-96px);
-            }
-        }
 
     </style>
     <script src="./jquery.js"></script>
@@ -138,10 +124,17 @@
             </ul>
         </div>
     </div>
+	
+
     <div class="btnw">
         <button class="btn start">开始</button>
         <button class="btn end">停止</button>
     </div>
+	
+	<div id="in" style="height: 200px;margin-top:20px">
+		<b style="color:red;font-size:30px;">中奖号码</b>
+		
+	</div>
 
     <div id="current" style="display:none">
 
@@ -150,6 +143,11 @@
     <div id="currentIndex" style="display:none">
 
     </div>
+
+	<div id='minus' style="display:none">
+	
+	</div>
+
 
     <div id="had">
 
@@ -170,13 +168,21 @@
     }
 
     function quickShow(){
-        var a = parseInt(nums.length * Math.random());
-        var num = nums[a];
+        var num = $('#current').html();
 
-        var first = num.substring(0, 1);
-        var second = num.substring(1, 2);
-        var third = num.substring(2, 3);
+console.log(num);
 
+        var first = ''+Math.abs(parseInt(num.substring(0, 1)) + 5);
+        var second = ''+Math.abs(parseInt(num.substring(1, 2)) + 5);
+        var third = ''+Math.abs(parseInt(num.substring(2, 3)) + 5);
+		
+console.log(first+'-'+second+'-'+third);		
+		var first = first.substr(first.length-1,1);
+		var second = second.substr(second.length-1,1);
+		var third = third.substr(third.length-1,1);
+		
+		
+		$('#minus').html(first+''+second+''+third);
         var firstTop = first*(-98);
         $('.first').css('margin-top', firstTop+'px');
 
@@ -225,21 +231,22 @@
         $('.third').animate({
             'margin-top': thirdtTop+'px',
         }, thirdtime, function (){
-            alert('恭喜 '+num+' 中奖');
+            $('#in').append("<div style='color:red;font-size:50px'>"+num+"</div>");
         });
     }
-
+	
     $('.start').click(function (){
         if($(this).hasClass('ing')){
             return false;
         }
+		
         xx = setInterval('getNum()', 60);
         $(this).addClass('ing');
 
     });
 
     function tobeLong(currNum, currIndex){
-        var num = '000';
+        var num = $('#minus').html();
         var first = num.substring(0, 1);
         var second = num.substring(1, 2);
         var third = num.substring(2, 3);
