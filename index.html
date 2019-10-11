@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -161,6 +162,7 @@
     function getNum(){
         var a = parseInt(nums.length * Math.random());
         var result = nums[a];
+
         $('#current').html(result);
         $('#currentIndex').html(a);
 
@@ -175,8 +177,7 @@ console.log(num);
         var first = ''+Math.abs(parseInt(num.substring(0, 1)) + 5);
         var second = ''+Math.abs(parseInt(num.substring(1, 2)) + 5);
         var third = ''+Math.abs(parseInt(num.substring(2, 3)) + 5);
-		
-console.log(first+'-'+second+'-'+third);		
+
 		var first = first.substr(first.length-1,1);
 		var second = second.substr(second.length-1,1);
 		var third = third.substr(third.length-1,1);
@@ -261,6 +262,10 @@ console.log(first+'-'+second+'-'+third);
         $('.third').css('margin-top', thirdtTop+'px');
     }
 
+    Array.prototype.remove = function(el) {
+        return this.splice(this.indexOf(el), 1);
+    }
+
     $('.end').click(function (){
         clearInterval(xx);
         $('.start').removeClass('ing');
@@ -271,6 +276,7 @@ console.log(first+'-'+second+'-'+third);
         //to be long
         tobeLong(currNum, currIndex);
 
+        nums.remove($('#current').html());
         showNum(currNum);
     });
 
