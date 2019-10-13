@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html>
 <head>
@@ -34,7 +35,8 @@
             margin: 0 auto;
             border: 1px solid red;
             background-color: #ffffff;
-            display: inline-block;
+			float: left;
+			margin-right:10px;
         }
 
 
@@ -52,7 +54,7 @@
         }
 
         .btnw {
-            margin-top: 100px;
+            margin-top: 60px;
         }
 
         .btn {
@@ -72,6 +74,11 @@
             color: #666;
             border: 1px solid #e2e2e2;
         }
+		#line{
+			height: 100px;
+			
+            display: inline-block;
+		}
 
 
     </style>
@@ -82,6 +89,7 @@
 <body>
 <div class="container">
     <div class="wrap">
+		<div id = 'line'>
         <div class="numw">
             <ul class="first">
                 <li>0</li>
@@ -111,6 +119,8 @@
             </ul>
         </div>
         <div class="numw">
+		
+		
             <ul class="third">
                 <li>0</li>
                 <li>1</li>
@@ -124,8 +134,11 @@
                 <li>9</li>
             </ul>
         </div>
-    </div>
+		</div>
 	
+	</div>
+	
+	<div style="clear:both"></div>
 
     <div class="btnw">
         <button class="btn start">开始</button>
